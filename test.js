@@ -1,9 +1,10 @@
+const { Script } = require('inquirer');
 const Script = require ('./assets/script');
 const writeHTML = require ('./assets/Writehtml');
+const test = require('jest');
 
-describe ("Inquirer", () =>{
-    it("should prompt questions to the user for filling out information", ()=>{
-const Script = new Script ();
-expect(Script)
-    });
-});
+// describe("Script", ()=> { 
+//     it("will prompt users a series of questions and store values in the objStore function",()=>{
+//         const Script = new Script
+//     })
+// })

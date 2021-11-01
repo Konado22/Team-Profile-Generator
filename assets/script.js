@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 const Choices = require('inquirer/lib/objects/choices');
-const objStore = {};
-function EmpPrompt {inquirer
+const objStore = [];
+function EmpPrompt() {inquirer
     .prompt([
         {
             type: 'list',
@@ -13,36 +14,36 @@ function EmpPrompt {inquirer
             type: 'prompt',
             message:'employee id',
             name:'empID'
-        }
+        },
         {
             type:'prompt',
             message:'email:',
             name:'empEmail'
-        }
+        },
         {
             type:'prompt',
             message:'Github username',
             name:'empGithub'
-        }
+        },
         {
             type:'confirm',
             message:'Would you like to add more Employees? y or n',
-            name:'prompt2'
+            then( res ) {
+                return EmpPrompt
+            }
         }
-    ])
-
-}
+    ])}
 function mngrPrompt () {inquirer 
 .prompt ([
     {
     type: 'prompt',
     message: 'Managers name',
-    name: 'Name'
+    name: 'manName'
     },
     {
     type: 'prompt',
     message: 'Employee ID',
-    name:'empID'
+    name:'manID'
     },
     {
     type: 'prompt',
@@ -56,14 +57,12 @@ function mngrPrompt () {inquirer
     },
     {
      type:'confirm',
-     message:'would you like to add anymore employees? y or n'
-     .then( function confirmed(){
-          return EmpPrompt();
+     name: 'mngRespond',
+     message:'would you like to add anymore employees? y or n',
+     if (response='y'){
+         return EmpPrompt();
      }
-     .then( function cancelled (){
-         console.log("thank you for filling out")
-     }
-    ))}
+    }
 
 ])}
-
+mngrPrompt();

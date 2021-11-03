@@ -7,7 +7,7 @@ function EmpPrompt() {inquirer
         {
             type: 'list',
             message: 'Please select employee title',
-            choices:['Engineer', 'Intern'],
+            choices:['Engineer', 'Intern', 'Manager ', ' None'],
             name:'empTitle'
         },
         {
@@ -20,19 +20,7 @@ function EmpPrompt() {inquirer
             message:'email:',
             name:'empEmail'
         },
-        {
-            type:'prompt',
-            message:'Github username',
-            name:'empGithub'
-        },
-        {
-            type:'confirm',
-            message:'Would you like to add more Employees? y or n',
-            then( res ) {
-                return EmpPrompt
-            }
-        }
-    ])}
+    ]).then ()}
 function mngrPrompt () {inquirer 
 .prompt ([
     {
@@ -54,15 +42,8 @@ function mngrPrompt () {inquirer
     type: 'prompt',
     message: 'Office Number',
     name: 'officeNum'
-    },
-    {
-     type:'confirm',
-     name: 'mngRespond',
-     message:'would you like to add anymore employees? y or n',
-     if (response='y'){
-         return EmpPrompt();
-     }
     }
 
-])}
-mngrPrompt();
+])
+}
+EmpPrompt();

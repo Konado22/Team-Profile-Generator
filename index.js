@@ -2,13 +2,31 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const Choices = require('inquirer/lib/objects/choices');
 const observe = require('inquirer/lib/utils/events');
-const empObject = {
-    title: undefined,
-    name: undefined,
-    id:undefined,
-    email:undefined
-};
+var empObject = {};
 const empArr = []
+function createStuff (data){
+    const card = document.createElement('div')
+    const h1=document.createElement('h1')
+    const h2=document.createElement('h2')
+    const h3=document.createElement('h3')
+    const h4=document.createElement('h4')
+    h1.textContent(data.name)
+    h2.textContent(data.title)
+    h3.textContent(data.id)
+    h4.textContent(data.officeNum)
+    if(!data.officeNum){
+    h4.textContent(data.intSchool)
+    }
+    else if (!data.intSchool){
+        h4.textContent(data.engGithub)
+    }
+    card.appendChild(h1)
+    card.appendChild(h2)
+    card.appendChild(h3)
+    card.appendChild(h4)
+    document.querySelector('body').appendChild(card)
+    
+}
 function EmpPrompt() {inquirer
     .prompt([
         {
@@ -64,10 +82,14 @@ function mngrPrompt () {inquirer
     empObject.name = answers.manName
     empObject.id= answers.manID
     empObject.email = answers.email
-    empObject.engGithub= answers.engGithub
-    empArr.push(empObject)
-empArr.splice(0, empArr.length)    
+    empObject.officeNum= answers.officeNum
+    empArr.push(empObject);
+    createStuff(empObject);
+    console.log(empArr)
+    empObject ={};
+    console.log(empObject)
     EmpPrompt();
+    
 })
 };
 function engPrompt (){
@@ -98,12 +120,10 @@ function engPrompt (){
         empObject.email = answers.email
         empObject.engGithub= answers.engGithub
         empArr.push(empObject)
-        empObject = {
-            title: undefined,
-            name: undefined,
-            id:undefined,
-            email:undefined
-        };
+        createStuff(empObject);
+        console.log(empArr)
+        empObject ={};
+        console.log(empObject)
         EmpPrompt();
     })}
     
@@ -111,7 +131,7 @@ function intPrompt(){
     inquirer.prompt([
         {   
         type: 'prompt',
-        message: 'Engineer name',
+        message: 'Intern name',
         name: 'intName'
         },
         {
@@ -126,25 +146,30 @@ function intPrompt(){
         },
         {
         type: 'prompt',
-        message:'school attended?',
+        message:'school attended',
         name:'intSchool'
-        }]).then((answers) =>{
-            empObject.name = answers.intName
-            empObject.id= answers.intID
-            empObject.email = answers.email
-            empObject.intSchool= answers.intSchool
-            empArr.push(empObject)
-            empObject = {
-                title: undefined,
-                name: undefined,
-                id:undefined,
-                email:undefined
-            };
-            EmpPrompt();
-        })
+        }
+    ]).then((answers) =>{
+        empObject.name = answers.intName
+        empObject.id= answers.intID
+        empObject.email = answers.intEmail
+        empObject.intSchool= answers.intSchool
+        empArr.push(empObject);
+        createStuff(empObject);
+        console.log(empArr);
+        empObject ={};  
+        console.log(empObject);
+        EmpPrompt();
+        createStuff(empObject);
+    })
     };
         EmpPrompt();
-
-        const createH = document.createElement('h1')
-        const createH2= document.createElement('h2')
-        const create 
+        
+        
+        
+        // const createME= document.createElement('div')
+        // const p = document.createElement('p')
+        // h1.textContent(empArr.name)
+        // h2.textContent(empArr.title)
+        // h3.textContent(empArr.id)
+        // h4.textContent(empArr.email)

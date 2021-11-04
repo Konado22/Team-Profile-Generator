@@ -144,6 +144,9 @@ function intPrompt() {
       empObject = {};
       console.log(empObject);
       EmpPrompt();
+      const finale = empArr.forEach(Object{
+        
+      });
     });
 }
 EmpPrompt();

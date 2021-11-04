@@ -10,7 +10,7 @@ function EmpPrompt() {
       {
         type: "list",
         message: "Please select employee title",
-        choices: ["Engineer", "Intern", "Manager", "None"],
+        choices: ["Manager(Do First)","Engineer", "Intern",  "None"],
         name: "empTitle",
       },
     ])
@@ -22,7 +22,7 @@ function EmpPrompt() {
         engPrompt();
       } else if (answers.empTitle === "Intern") {
         intPrompt();
-      } else if (answers.empTitle === "Manager") {
+      } else if (answers.empTitle === "Manager(Do First)") {
         mngrPrompt();
       } else {
 
@@ -63,7 +63,7 @@ function mngrPrompt() {
         empArr.push(empObject);
       let newHTML = `<div><h1>${empObject.name}</h1><h2>${empObject.title}</h2><h3>${empObject.idInfo}</h3><h4><a href="gmail.com>" ${empObject.email}></a></h4><p>${empObject.officeNum}</p></div>`;
       // const appendthis= document.body.appendChild(newHTML)
-      fs.appendFile("index.html", newHTML, err =>{
+      fs.writeFile("index.html", newHTML, err =>{
         if (err){
           return
         }

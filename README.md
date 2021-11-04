@@ -24,4 +24,4 @@ package-lock.json <br />
 -myself 
 ## link 
 https://github.com/Konado22/Team-Profile-Generator <br />
-https://watch.screencastify.com/v/Yzgr5NxTssQjDuqvR1QT
+https://watch.screencastify.com/v/3kZFnVQtko60mMQ4R4RO
